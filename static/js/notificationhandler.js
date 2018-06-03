@@ -129,11 +129,11 @@ function type15(data, detail=false){
 
         // Only show changed for upto 5 meta attributes.
         if (updatedLength <= 5) {
-            content += '<br><div class="meta"><p>Following meta attributes were updated:</p><ul>' + Object.keys(updated).map(
-                key => '<li><b>' + key + '</b> was updated from <b>' + updated[key][0] + '</b> to <b>' + updated[key][1] + '</b>.</li>',
+            content += Object.keys(updated).map(
+                key => '<li style="margin-left:60px;" ><b>' + key + '</b> was updated from <b>' + updated[key][0] + '</b> to <b>' + updated[key][1] + '</b>.</li>',
             ).join(' ') + '</ul></div>';
         } else {
-            content += '<br><div class="meta"><p>' + updatedLength + ' meta attributes were updated.</p><div>';
+            content += '<br><div style="margin-left:60px;" class="meta"><p>' + updatedLength + ' meta attributes were updated.</p><div>';
         }
     }
     return content;

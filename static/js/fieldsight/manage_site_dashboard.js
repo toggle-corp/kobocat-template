@@ -83,8 +83,7 @@ window.app = new Vue({
      
       datetime = dateTimeParser(item.date);
       item.datetime =datetime;
-
-      item.content=types[item.type](item);
+      item.content=types[item.type](item, true);
       // item.localtime=date_local;
       date_str = datetime.date;
       
