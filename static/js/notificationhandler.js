@@ -125,16 +125,11 @@ function type15(data, detail=false){
     content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> changed the details of site named <b><a href="' +  data.get_event_url + '">' + data.get_event_name + '</a></b>.';
     if (data.extra_json && detail) {
         const updated = data.extra_json;
-        const updatedLength = Object.keys(updated).length;
-
-        // Only show changed for upto 5 meta attributes.
-        if (updatedLength <= 5) {
-            content += Object.keys(updated).map(
-                key => '<li style="margin-left:60px;" ><b>' + key + '</b> was updated from <b>' + updated[key][0] + '</b> to <b>' + updated[key][1] + '</b>.</li>',
-            ).join(' ') + '</ul></div>';
-        } else {
-            content += '<br><div style="margin-left:60px;" class="meta"><p>' + updatedLength + ' meta attributes were updated.</p><div>';
-        }
+        
+        content += Object.keys(updated).map(
+            key => '<li style="margin-left:60px;" ><b>' + key + '</b> was updated from <b>' + updated[key][0] + '</b> to <b>' + updated[key][1] + '</b>.</li>',
+        ).join(' ') + '</ul></div>';
+     
     }
     return content;
 }   
@@ -203,32 +198,31 @@ function type25(data){
 }
 
 
+function type26(data){
+      content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> was added as the Project Manager in '+ data.extra_message +' projects of <b><a href="' +  data.get_event_url + '">' + data.get_event_name + '</a></b> by <b><a href="' +  data.get_extraobj_url + '">' + data.get_extraobj_name + '</a></b>.';
+          return content;
+}
 
-    function type26(data){
-          content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> was added as the Project Manager in '+ data.extra_message +' projects of <b><a href="' +  data.get_event_url + '">' + data.get_event_name + '</a></b> by <b><a href="' +  data.get_extraobj_url + '">' + data.get_extraobj_name + '</a></b>.';
-              return content;
-    }
+function type27(data){
+       content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> was added as Reviewer in '+ data.extra_message +' sites of <b><a href="' +  data.get_event_url + '">' + data.get_event_name + '</a></b> by <b><a href="' +  data.get_extraobj_url + '">' + data.get_extraobj_name + '</a></b>.';
+          return content;
 
-    function type27(data){
-           content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> was added as Reviewer in '+ data.extra_message +' sites of <b><a href="' +  data.get_event_url + '">' + data.get_event_name + '</a></b> by <b><a href="' +  data.get_extraobj_url + '">' + data.get_extraobj_name + '</a></b>.';
-              return content;
+}
+function type28(data){
+      content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> was added as Site Supervisor in '+ data.extra_message +' sites of <b><a href="' +  data.get_event_url + '">' + data.get_event_name + '</a></b> by <b><a href="' +  data.get_extraobj_url + '">' + data.get_extraobj_name + '</a></b>.';
+            return content;
 
-    }
-    function type28(data){
-          content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> was added as Site Supervisor in '+ data.extra_message +' sites of <b><a href="' +  data.get_event_url + '">' + data.get_event_name + '</a></b> by <b><a href="' +  data.get_extraobj_url + '">' + data.get_extraobj_name + '</a></b>.';
-                return content;
+}
+function type29(data){
+      content = 'Project Sites import from <a href="' +  data.get_extraobj_url + '"><b>' + data.get_extraobj_name + '</a></b> has <span style="color:green;"><b>completed successfully</b></span> in project <a href="' +  data.get_event_url + '"><b>' + data.get_event_name + '</a></b>.';
+            return content;
 
-    }
-    function type29(data){
-          content = 'Project Sites import from <a href="' +  data.get_extraobj_url + '"><b>' + data.get_extraobj_name + '</a></b> has <span style="color:green;"><b>completed successfully</b></span> in project <a href="' +  data.get_event_url + '"><b>' + data.get_event_name + '</a></b>.';
-                return content;
+}
+function type30(data){
+      content = data.extra_message + '<a href="' +  data.get_extraobj_url + '"><b>' + data.get_extraobj_name + '</a></b> has <span style="color:green;"><b>completed successfully</b></span> in project <a href="' +  data.get_event_url + '"><b>' + data.get_event_name + '</a></b>.'; 
+            return content;
 
-    }
-    function type30(data){
-          content = data.extra_message + '<a href="' +  data.get_extraobj_url + '"><b>' + data.get_extraobj_name + '</a></b> has <span style="color:green;"><b>completed successfully</b></span> in project <a href="' +  data.get_event_url + '"><b>' + data.get_event_name + '</a></b>.'; 
-                return content;
-
-    }
+}
 
 
 // ----------------Errors -------------------

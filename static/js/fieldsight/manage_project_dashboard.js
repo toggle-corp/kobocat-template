@@ -624,15 +624,11 @@ window.app = new Vue({
   methods:{
     loadDatas : function (){
     var self = this;
-
     self.loading = true;
     if(self.search_key){
         var options = {'name':self.search_key};
-
     }else{
-
         var options = {};
-
     }
 
     function successCallback(response) {
@@ -651,8 +647,6 @@ window.app = new Vue({
     self.$http.get(self.load_all_projects_url, {
         params: options
     }).then(successCallback, errorCallback);
-
-
     },
 
     selectAllMetas: function(){

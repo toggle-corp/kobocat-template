@@ -126,19 +126,31 @@ window.app = new Vue({
 
 
 // window.app = new Vue({
-//   el: '#allmetas',
+//   el: '#allmetass',
 
-//   template: ` <div class="row">
-//                 <div v-for="item in all_metas" class="col-md-6">
-//                   <div class="meta-item">
-//                     <p><strong>{{ item['question_name'] }} :</strong> <br><span v-html="item['answer']"></span>  </p>
-//                   </div>
-//                 </div>
-//               </div>`,
+//   template: ` 
+
+// <div class="container">
+//     <ul class="nav nav-tabs">
+//     <li v-for="item, key in items" v-on:click="active = item"  v-bind:key="key" :class="item == active ? 'active':''" onclick="changetab"><a data-toggle="tab" v-bind:href="'#' + item">{{item}}</a></li>
+//   </ul>
+
+//   <div class="tab-content">
+//     <div v-bind:id="item" v-for="item,key in items" v-bind:key="key" :class="item == active ? 'tab-pane fade in active' : 'tab-pane fade in'">
+//       <h3>{{ item }}</h3>
+//       <p>{{ item }}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+//     </div>
+    
+//   </div>
+// </div>
+
+// `,
 
 //   data: {
 //         loading : false,
 //         all_metas: [],
+//         active: 'item3',
+//         items:['item1', 'item2', 'item3'],
 //         load_all_attribs:'/fieldsight/api/siteallmetas/'+configure_settings.site_id+'/',
 //      },
 
@@ -162,9 +174,25 @@ window.app = new Vue({
 //     }
     
 //    },
+    
+   
+
 //   created(){
 //     var self= this;
 //     self.loadDatas();
 //   },
 
 // })
+
+
+
+
+var MyComponent = Vue.extend({
+  template: '<div>A custom cxzxxzzxomponentskjdhkdsjhdkshdkjd shdkhdkdhshkjsdh dksjhdsk!</div>'
+})
+// register
+Vue.component('my-component', MyComponent)
+// create a root instance
+new Vue({
+  el: '#example'
+})
