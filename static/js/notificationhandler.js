@@ -126,11 +126,9 @@ function type15(data, detail=false){
     content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> changed the details of site named <b><a href="' +  data.get_event_url + '">' + data.get_event_name + '</a></b>.';
     if (data.extra_json && detail) {
         const updated = data.extra_json;
-        
         content += Object.keys(updated).map(
             key => '<li style="margin-left:60px;" ><b>' + key + '</b> was updated from <b>' + updated[key][0] + '</b> to <b>' + updated[key][1] + '</b>.</li>',
         ).join(' ') + '</ul></div>';
-     
     }
     return content;
 }   
