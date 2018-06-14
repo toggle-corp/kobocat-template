@@ -33,11 +33,12 @@
         28 : type28,
         29 : type29,
         30 : type30,
+        31 : type31,
         412: type412,
         421: type421,
         422: type422,
-        423: type423,
-        424: type424,
+        429: type429,
+        423: type430,
     }
 
 // index starting from 4 are error notifications of equvalent notifications
@@ -136,13 +137,17 @@ function type15(data, detail=false){
 
 function type16(data){
     var formdetail = data.get_event_name.split("form");
-    content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> submitted a response for '+ formdetail[0] +'form <b><a href="' +  data.get_event_url + '">' + formdetail[1] + '</a></b>' + '</a></b> in site <b><a href="' + data.get_extraobj_url+ '">' + data.get_extraobj_name+'</a></b>.';
+    var level = "site";
+    if (data.extra_message == "project"){ level="project"; }
+    content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> submitted a response for '+ formdetail[0] +'form <b><a href="' +  data.get_event_url + '">' + formdetail[1] + '</a></b>' + '</a></b> in '+ level +' <b><a href="' + data.get_extraobj_url+ '">' + data.get_extraobj_name+'</a></b>.';
     return content;
 }   
 
 function type17(data){
     var formdetail = data.get_event_name.split("form");
-    content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> reviewed a response for '+ formdetail[0] +'form <b><a href="' + data.get_event_url+ '">' + formdetail[1]+'</a></b> in site <b><a href="' + data.get_extraobj_url+ '">' + data.get_extraobj_name+'</a></b>.';
+    var level = "site";
+    if (data.extra_message == "project"){ level="project"; }
+    content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> reviewed a response for '+ formdetail[0] +'form <b><a href="' + data.get_event_url+ '">' + formdetail[1]+'</a></b> in '+ level +' <b><a href="' + data.get_extraobj_url+ '">' + data.get_extraobj_name+'</a></b>.';
     return content;
 }   
 
@@ -224,6 +229,15 @@ function type30(data){
 
 }
 
+function type31(data){
+    var formdetail = data.get_event_name.split("form");
+    var level = "site";
+    if (data.extra_message == "project"){ level="project"; }
+    content = '<b><a href="' + data.get_source_url + '">'+ data.source_name +'</a></b> edited a response in '+ formdetail[0] +'form <b><a href="' +  data.get_event_url + '">' + formdetail[1] + '</a></b>' + '</a></b> in '+ level +' <b><a href="' + data.get_extraobj_url+ '">' + data.get_extraobj_name+'</a></b>.';
+    return content;
+}
+
+
 
 // ----------------Errors -------------------
 
@@ -231,7 +245,7 @@ function type412(data){
     var errormsg=data.extra_message;
     var messages = errormsg.split("@error");
 
-    var readableerror = "sadsad";
+    var readableerror = "";
     if (messages.length > 1){
 
         errors = messages[1].split("DETAIL:");
@@ -261,15 +275,16 @@ function type422(data){
     return content;
 }
 
-    function type423(data){
-          content = 'Project Sites import from <a href="' +  data.get_extraobj_url + '"><b>' + data.get_extraobj_name + '</a></b> has <span style="color:maroon;"><b>failed</b></span> in project <a href="' +  data.get_event_url + '"><b>' + data.get_event_name + '</a></b>.';
-          return content;
-        }
+function type429(data){
+    content = 'Project Sites import from <a href="' +  data.get_extraobj_url + '"><b>' + data.get_extraobj_name + '</a></b> has <span style="color:maroon;"><b>failed</b></span> in project <a href="' +  data.get_event_url + '"><b>' + data.get_event_name + '</a></b>.';
+    return content;
+}
 
-    function type424(data){
-          content = data.extra_message + '<a href="' +  data.get_extraobj_url + '"><b>' + data.get_extraobj_name + '</a></b> has <span style="color:maroon;"><b>failed</b></span> in project <a href="' +  data.get_event_url + '"><b>' + data.get_event_name + '</a></b>.';
-          return content;
-        }
+function type430(data){
+    content = data.extra_message + '<a href="' +  data.get_extraobj_url + '"><b>' + data.get_extraobj_name + '</a></b> has <span style="color:maroon;"><b>failed</b></span> in project <a href="' +  data.get_event_url + '"><b>' + data.get_event_name + '</a></b>.';
+    return content;
+}
+
 
 
 
